@@ -21,4 +21,15 @@ service / on new http:Listener(9090) {
         log:printInfo("Response: " + resp.toJsonString());
         return resp;
     }
+
+    resource function get diagnostic() returns json {
+        json diagnostic = {
+            "serviceUrl": serviceUrl,
+            "tokenUrl": tokenUrl,
+            "clientId": clientId,
+            "clientSecret": clientSecret
+        };
+        log:printInfo("Details: " + diagnostic.toJsonString());
+        return diagnostic;
+    }
 }
