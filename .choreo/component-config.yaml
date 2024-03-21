@@ -19,7 +19,7 @@ spec:
       schemaFilePath: bff_service_openapi.yaml
   outbound:
     serviceReferences:
-    - name: choreo:///chathurangasiriwardhana/marketplaceintrouting/qahmik/proxy/v1.0/PUBLIC
+    - name: choreo:///chathurangasiriwardhana/marketplaceintrouting/qahmik/proxy/v1/PUBLIC
       connectionConfig: 01eee765-bfc2-1ec8-8b47-a719a172a97e
       env:
       - from: ServiceURL
