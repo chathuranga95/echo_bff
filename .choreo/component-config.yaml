@@ -20,7 +20,7 @@ spec:
   outbound:
     serviceReferences:
     - name: choreo:///chathurangasiriwardhana/marketplaceintrouting/qahmik/proxy/v1/PUBLIC
-      connectionConfig: 01eeeb5f-11e9-180e-92f3-6118679a42f8
+      connectionConfig: 01eeecf7-7475-184e-a4ac-b6777eeeda0a
       env:
       - from: ServiceURL
         to: SERVICE_URL
