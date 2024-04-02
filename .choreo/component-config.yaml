@@ -17,3 +17,16 @@ spec:
       # This is mandatory if the endpoint type is set to REST or GraphQL.
       context: /
       schemaFilePath: bff_service_openapi.yaml
+  outbound:
+    serviceReferences:
+    - name: choreo:///chathurangasiriwardhana/marketplaceintrouting/qahmik/proxy/v1/PUBLIC
+      connectionConfig: 01eef0ee-73c1-1618-bedd-47f30f2c2b63
+      env:
+      - from: ServiceURL
+        to: SERVICE_URL
+      - from: ConsumerKey
+        to: CLIENT_ID
+      - from: ConsumerSecret
+        to: CLIENT_SECRET
+      - from: TokenURL
+        to: TOKEN_URL
