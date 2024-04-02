@@ -17,3 +17,16 @@ spec:
       # This is mandatory if the endpoint type is set to REST or GraphQL.
       context: /
       schemaFilePath: bff_service_openapi.yaml
+  outbound:
+    serviceReferences:
+    - name: choreo:///chathurangasiriwardhana/verifyconnstory/qsbnrz/proxy/v1.0/PUBLIC
+      connectionConfig: 01eef100-47ae-1dc0-9e48-19ef7cada21b
+      env:
+      - from: ServiceURL
+        to: SERVICE_URL
+      - from: ConsumerKey
+        to: CLIENT_ID
+      - from: ConsumerSecret
+        to: CLIENT_SECRET
+      - from: TokenURL
+        to: TOKEN_URL
