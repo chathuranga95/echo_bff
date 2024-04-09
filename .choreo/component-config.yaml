@@ -19,8 +19,8 @@ spec:
       schemaFilePath: bff_service_openapi.yaml
   outbound:
     serviceReferences:
-    - name: choreo:///chathurangasiriwardhana/verifyconnstory/qsbnrz/proxy/v1.0/PUBLIC
-      connectionConfig: 01eef100-47ae-1dc0-9e48-19ef7cada21b
+    - name: choreo:///chathurangasiriwardhana/marketplaceintrouting/uxgnfy/proxy/v1/PUBLIC
+      connectionConfig: 01eef654-aa4e-12d8-948a-4e1a7570d9b3
       env:
       - from: ServiceURL
         to: SERVICE_URL
