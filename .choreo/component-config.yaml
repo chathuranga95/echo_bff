@@ -20,7 +20,7 @@ spec:
   outbound:
     serviceReferences:
     - name: choreo:///chathurangasiriwardhana/marketplaceintrouting/uxgnfy/proxy/v1/PUBLIC
-      connectionConfig: 01eef654-aa4e-12d8-948a-4e1a7570d9b3
+      connectionConfig: 01eef6fa-23ec-1270-b7d9-27b24be4fdd3
       env:
       - from: ServiceURL
         to: SERVICE_URL
