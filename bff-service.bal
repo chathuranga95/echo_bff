@@ -28,7 +28,7 @@ service / on new http:Listener(9090) {
             "tokenUrl": tokenUrl,
             "clientId": clientId,
             "clientSecret": clientSecret,
-            "diagnosticVersion": "v1.3"
+            "diagnosticVersion": "v1.4"
         };
         log:printInfo("Details: " + diagnostic.toJsonString());
         return diagnostic;
