@@ -20,7 +20,7 @@ spec:
   outbound:
     serviceReferences:
     - name: choreo:///chathurangasiriwardhana/marketplaceintrouting/atbgda/proxy/v1/PUBLIC
-      connectionConfig: 01eefaf2-8d04-1dd8-afee-9ee1201026ed
+      connectionConfig: 01eefb21-3400-16e0-afef-5dbef13e58ba
       env:
       - from: ServiceURL
         to: SERVICE_URL
