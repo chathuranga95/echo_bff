@@ -13,6 +13,12 @@ paths:
   /greeting:
     get:
       operationId: getGreeting
+      parameters:
+      - in: query
+        name: subpath
+        schema:
+          type: string
+        description: The subpath for the greeting.
       responses:
         "200":
           description: Ok
