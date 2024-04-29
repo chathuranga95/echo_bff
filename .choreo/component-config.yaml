@@ -19,8 +19,8 @@ spec:
       schemaFilePath: bff_service_openapi.yaml
   outbound:
     serviceReferences:
-    - name: choreo:///chathurangasiriwardhana/marketplaceintrouting/etswgp/803f0/v1/ORGANIZATION
-      connectionConfig: 01ef0394-f90a-1006-9a4a-44d481a911f8
+    - name: choreo:///apifirst/chathuranga-int-routing-t/oejuyk/proxy/v1.0/PUBLIC
+      connectionConfig: 01ef0648-904a-1ae0-878f-bfe9f952fba2
       env:
       - from: ServiceURL
         to: SERVICE_URL
