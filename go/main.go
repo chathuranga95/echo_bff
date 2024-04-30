@@ -2,102 +2,65 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 	"net/http"
 	"os"
-	"strings"
 )
 
-// Configuration holds the environment variables for the service.
-type Configuration struct {
-	ServiceURL   string
-	TokenURL     string
-	ClientID     string
-	ClientSecret string
+// Config struct for holding environment variables
+type Config struct {
+	ServiceURL string
 }
 
-// GreetingResponse represents the response from the hello service.
-type GreetingResponse struct {
-	Message string `json:"message"`
+// Get the service URL from the environment
+func getServiceURL() string {
+	return os.Getenv("SERVICE_URL")
 }
 
-// DiagnosticInfo holds diagnostic information.
-type DiagnosticInfo struct {
-	ServiceURL        string `json:"serviceUrl"`
-	TokenURL          string `json:"tokenUrl"`
-	ClientID          string `json:"clientId"`
-	ClientSecret      string `json:"clientSecret"`
-	DiagnosticVersion string `json:"diagnosticVersion"`
-}
+// GreetingHandler for /greeting endpoint
+func GreetingHandler(w http.ResponseWriter, r *http.Request) {
+	serviceURL := getServiceURL()
 
-// GetConfiguration retrieves the configuration from environment variables.
-func GetConfiguration() (*Configuration, error) {
-	return &Configuration{
-		ServiceURL:   os.Getenv("SERVICE_URL"),
-		TokenURL:     os.Getenv("TOKEN_URL"),
-		ClientID:     os.Getenv("CLIENT_ID"),
-		ClientSecret: os.Getenv("CLIENT_SECRET"),
-	}, nil
-}
-
-// GreetingHandler returns a greeting message from an external service.
-func GreetingHandler(config *Configuration) http.HandlerFunc {
-	return func(w http.ResponseWriter, r *http.Request) {
-		subpath := strings.TrimPrefix(r.URL.Path, "/greeting")
-		if subpath != "" {
-			subpath = "/" + subpath
-		}
-
-		client := &http.Client{}
-		req, err := http.NewRequest("GET", config.ServiceURL+subpath, nil)
-		if err != nil {
-			http.Error(w, "Failed to create request", http.StatusInternalServerError)
-			return
-		}
-
-		resp, err := client.Do(req)
-		if err != nil {
-			http.Error(w, "Failed to get greeting", http.StatusInternalServerError)
-			return
-		}
-		defer resp.Body.Close()
-
-		var result GreetingResponse
-		if err := json.NewDecoder(resp.Body).Decode(&result); err != nil {
-			http.Error(w, "Failed to decode response", http.StatusInternalServerError)
-			return
-		}
-
-		w.Header().Set("Content-Type", "application/json")
-		json.NewEncoder(w).Encode(result)
+	// Create an HTTP client to fetch the greeting
+	client := &http.Client{}
+	resp, err := client.Get(serviceURL + r.URL.Path)
+	if err != nil {
+		http.Error(w, "Failed to fetch greeting", http.StatusInternalServerError)
+		log.Println("Error fetching greeting:", err)
+		return
 	}
+	defer resp.Body.Close()
+
+	// Read the response and write it back as JSON
+	w.Header().Set("Content-Type", "application/json")
+	_, err = w.Write([]byte(fmt.Sprintf(`{"response": "Successful"}`)))
+	if err != nil {
+		log.Println("Error writing response:", err)
+	}
+	log.Println("Greeting response sent")
 }
 
-// DiagnosticHandler returns diagnostic information about the service.
-func DiagnosticHandler(config *Configuration) http.HandlerFunc {
-	return func(w http.ResponseWriter, r *http.Request) {
-		info := DiagnosticInfo{
-			ServiceURL:        config.ServiceURL,
-			TokenURL:          config.TokenURL,
-			ClientID:          config.ClientID,
-			ClientSecret:      config.ClientSecret,
-			DiagnosticVersion: "v1.0",
-		}
-
-		w.Header().Set("Content-Type", "application/json")
-		json.NewEncoder(w).Encode(info)
+// DiagnosticHandler for /diagnostic endpoint
+func DiagnosticHandler(w http.ResponseWriter, r *http.Request) {
+	diagnostic := map[string]interface{}{
+		"serviceUrl":        getServiceURL(),
+		"diagnosticVersion": "v1.0",
 	}
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(diagnostic)
+
+	log.Println("Diagnostic response sent")
 }
 
 func main() {
-	config, err := GetConfiguration()
-	if err != nil {
-		log.Fatalf("Failed to get configuration: %v", err)
+	http.HandleFunc("/greeting", GreetingHandler)
+	http.HandleFunc("/diagnostic", DiagnosticHandler)
+
+	port := ":9090"
+	log.Printf("Server starting on port %s\n", port)
+	if err := http.ListenAndServe(port, nil); err != nil {
+		log.Fatal("Failed to start server:", err)
 	}
-
-	http.HandleFunc("/greeting", GreetingHandler(config))
-	http.HandleFunc("/diagnostic", DiagnosticHandler(config))
-
-	log.Println("Starting server on port 9090...")
-	log.Fatal(http.ListenAndServe(":9090", nil))
 }
