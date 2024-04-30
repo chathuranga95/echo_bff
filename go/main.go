@@ -2,7 +2,7 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
@@ -24,7 +24,8 @@ func GreetingHandler(w http.ResponseWriter, r *http.Request) {
 
 	// Create an HTTP client to fetch the greeting
 	client := &http.Client{}
-	resp, err := client.Get(serviceURL + r.URL.Path)
+	log.Println("Fetching greeting from", serviceURL+"/"+r.URL.Query().Get("subpath"))
+	resp, err := client.Get(serviceURL + "/" + r.URL.Query().Get("subpath"))
 	if err != nil {
 		http.Error(w, "Failed to fetch greeting", http.StatusInternalServerError)
 		log.Println("Error fetching greeting:", err)
@@ -34,7 +35,13 @@ func GreetingHandler(w http.ResponseWriter, r *http.Request) {
 
 	// Read the response and write it back as JSON
 	w.Header().Set("Content-Type", "application/json")
-	_, err = w.Write([]byte(fmt.Sprintf(`%s`, resp.Body)))
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		http.Error(w, "Failed to read response", http.StatusInternalServerError)
+		log.Println("Error reading response:", err)
+		return
+	}
+	_, err = w.Write(body)
 	if err != nil {
 		log.Println("Error writing response:", err)
 	}
