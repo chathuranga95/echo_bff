@@ -19,8 +19,8 @@ spec:
       schemaFilePath: bff_service_openapi.yaml
   outbound:
     serviceReferences:
-    - name: choreo:///apifirst/mkplaceintrouting/dsswhm/proxy/v1/PUBLIC
-      connectionConfig: 01ef06a2-134c-122e-ba93-e7e75a07d58f
+    - name: choreo:///apifirst/mkplaceintrouting/iuzkkn/803f0/v1/ORGANIZATION
+      connectionConfig: 01ef06b0-3120-1840-b80b-958f3398c2f3
       env:
       - from: ServiceURL
         to: SERVICE_URL
