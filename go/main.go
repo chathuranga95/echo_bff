@@ -34,7 +34,7 @@ func GreetingHandler(w http.ResponseWriter, r *http.Request) {
 
 	// Read the response and write it back as JSON
 	w.Header().Set("Content-Type", "application/json")
-	_, err = w.Write([]byte(fmt.Sprintf(`{"response": "Successful"}`)))
+	_, err = w.Write([]byte(fmt.Sprintf(`%s`, resp.Body)))
 	if err != nil {
 		log.Println("Error writing response:", err)
 	}
