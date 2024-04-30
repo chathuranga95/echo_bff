@@ -19,8 +19,8 @@ spec:
       schemaFilePath: bff_service_openapi.yaml
   outbound:
     serviceReferences:
-    - name: choreo:///apifirst/chathuranga-int-routing-t/oejuyk/proxy/v1.0/PUBLIC
-      connectionConfig: 01ef064c-013f-1956-a3b1-2b1c04edb6e5
+    - name: choreo:///apifirst/mkplaceintrouting/dsswhm/proxy/v1/PUBLIC
+      connectionConfig: 01ef06a2-134c-122e-ba93-e7e75a07d58f
       env:
       - from: ServiceURL
         to: SERVICE_URL
