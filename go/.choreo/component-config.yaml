@@ -17,13 +17,13 @@ spec:
       # This is mandatory if the endpoint type is set to REST or GraphQL.
       context: /
       schemaFilePath: bff_service_openapi.yaml
-  # outbound:
-  #   serviceReferences:
-  #   - name: choreo:///apifirst/mkplaceintrouting/iuzkkn/803f0/v1/PROJECT
-  #     connectionConfig: 01ef06a8-793b-1a88-9c15-13650be746ab
-  #     env:
-  #     - from: ServiceURL
-  #       to: SERVICE_URL
+  outbound:
+    serviceReferences:
+    - name: choreo:///apifirst/mkplaceintrouting/iuzkkn/803f0/v1/PROJECT
+      connectionConfig: 01ef06b5-1b61-18d8-9c65-4c5a69fbb898
+      env:
+      - from: ServiceURL
+        to: SERVICE_URL
   #     - from: ConsumerKey
   #       to: CLIENT_ID
   #     - from: ConsumerSecret
