@@ -15,7 +15,7 @@ spec:
       networkVisibility: Public
       # +optional Context (base path) of the API that gets exposed via the endpoint.
       # This is mandatory if the endpoint type is set to REST or GraphQL.
-      context: /echo_bff
+      context: /
       schemaFilePath: bff_service_openapi.yaml
   outbound:
     serviceReferences:
