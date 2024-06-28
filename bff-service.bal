@@ -16,8 +16,8 @@ http:Client helloClient = check new (serviceUrl,
 );
 
 service / on new http:Listener(9090) {
-    resource function get greeting() returns json|error? {
-        json resp = check helloClient->get("/");
+    resource function get greeting(string subpath = "") returns json|error? {
+        json resp = check helloClient->get("/" + subpath);
         log:printInfo("Response: " + resp.toJsonString());
         return resp;
     }
@@ -27,7 +27,8 @@ service / on new http:Listener(9090) {
             "serviceUrl": serviceUrl,
             "tokenUrl": tokenUrl,
             "clientId": clientId,
-            "clientSecret": clientSecret
+            "clientSecret": clientSecret,
+            "diagnosticVersion": "v1.0"
         };
         log:printInfo("Details: " + diagnostic.toJsonString());
         return diagnostic;
