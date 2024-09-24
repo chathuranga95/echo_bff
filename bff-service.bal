@@ -7,21 +7,7 @@ final string tokenUrl = os:getEnv("TOKEN_URL");
 final string clientId = os:getEnv("CLIENT_ID");
 final string clientSecret = os:getEnv("CLIENT_SECRET");
 
-http:Client helloClient = check new (serviceUrl,
-    auth = {
-        tokenUrl: tokenUrl,
-        clientId: clientId,
-        clientSecret: clientSecret
-    }
-);
-
 service / on new http:Listener(9090) {
-    resource function get greeting(string subpath = "") returns json|error? {
-        json resp = check helloClient->get("/" + subpath);
-        log:printInfo("Response: " + resp.toJsonString());
-        return resp;
-    }
-
     resource function get diagnostic() returns json {
         json diagnostic = {
             "serviceUrl": serviceUrl,
