@@ -19,8 +19,8 @@ spec:
       schemaFilePath: bff_service_openapi.yaml
   outbound:
     serviceReferences:
-    - name: choreo:///chathurangasiriwardhana/connkeysrotation/hello-service/803f0/v1/PUBLIC
-      connectionConfig: 01ef7a3f-f8f3-1568-b6c3-a319ac41f090
+    - name: choreo:///chathurangasiriwardhana/prototypedproject/autobuild-prism/803f0/v1/PUBLIC
+      connectionConfig: 01ef7a3f-a581-1088-8322-ac5bc449b1d9
       env:
       - from: ServiceURL
         to: SERVICE_URL
