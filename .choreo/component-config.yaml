@@ -19,8 +19,8 @@ spec:
       schemaFilePath: bff_service_openapi.yaml
   outbound:
     serviceReferences:
-    - name: choreo:///chathurangasiriwardhana/multivisibilityproject/prj-pub-visibility-checke/60114/v1/PUBLIC
-      connectionConfig: 01ef9cc5-41e8-12d0-814c-7b2557dc6848
+    - name: choreo:///chathurangasiriwardhana/multivisibilityproject/test-mock/803f0/v1/PUBLIC
+      connectionConfig: 01ef9cdb-fc83-12a0-8637-494244bd3acf
       env:
       - from: ServiceURL
         to: SERVICE_URL
