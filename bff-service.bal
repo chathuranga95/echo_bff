@@ -13,7 +13,7 @@ final string clientSecret2 = os:getEnv("CLIENT_SECRET_2");
 
 http:Client helloClient = check new (serviceUrl,
     auth = {
-        tokenUrl: tokenUrl,
+        tokenUrl: tokenUrl == "" ? "https://sts.preview-dv.choreo.dev/oauth2/token" : tokenUrl,
         clientId: clientId,
         clientSecret: clientSecret
     }
