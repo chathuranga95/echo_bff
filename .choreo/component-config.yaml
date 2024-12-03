@@ -19,15 +19,25 @@ spec:
       schemaFilePath: bff_service_openapi.yaml
   outbound:
     serviceReferences:
-    - name: choreo:///chathurangasiriwardhana/multivisibilityproject/test-mock/803f0/v1/PUBLIC
-      connectionConfig: 01ef9cdb-fc83-12a0-8637-494244bd3acf
+    - name: choreo:///chathurangasiriwardhana/connkeysrotation/hello-service/803f0/v1/PUBLIC
+      connectionConfig: 01efb159-40d9-1dc8-a2c3-4af45632be1c
       env:
       - from: ServiceURL
         to: SERVICE_URL
-      - from: ConsumerKey
+      - from: ConsumerKey # Klyr1CQmMJfjshsMcjcmlGlAFqka
         to: CLIENT_ID
-      - from: ConsumerSecret
+      - from: ConsumerSecret # fxNDdMVMf7ehFIubeMTtmFwaLEMa
         to: CLIENT_SECRET
       - from: TokenURL
         to: TOKEN_URL
-
+    - name: choreo:///chathurangasiriwardhana/multivisibilityproject/test-mock/803f0/v1/PUBLIC
+      connectionConfig: 01efb159-80a0-1c46-9687-1516eaf61aff
+      env:
+      - from: ServiceURL
+        to: SERVICE_URL_2
+      - from: ConsumerKey # Klyr1CQmMJfjshsMcjcmlGlAFqka
+        to: CLIENT_ID_2
+      - from: ConsumerSecret # fxNDdMVMf7ehFIubeMTtmFwaLEMa
+        to: CLIENT_SECRET_2
+      - from: TokenURL
+        to: TOKEN_URL_2
