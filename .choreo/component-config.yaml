@@ -30,14 +30,14 @@ spec:
         to: CLIENT_SECRET
       - from: TokenURL
         to: TOKEN_URL
-    - name: choreo:///chathurangasiriwardhana/multivisibilityproject/test-mock/803f0/v1/PUBLIC
-      connectionConfig: 01efb159-80a0-1c46-9687-1516eaf61aff
-      env:
-      - from: ServiceURL
-        to: SERVICE_URL_2
-      - from: ConsumerKey # Klyr1CQmMJfjshsMcjcmlGlAFqka
-        to: CLIENT_ID_2
-      - from: ConsumerSecret # fxNDdMVMf7ehFIubeMTtmFwaLEMa
-        to: CLIENT_SECRET_2
-      - from: TokenURL
-        to: TOKEN_URL_2
+    # - name: choreo:///chathurangasiriwardhana/multivisibilityproject/test-mock/803f0/v1/PUBLIC
+    #   connectionConfig: 01efb159-80a0-1c46-9687-1516eaf61aff
+    #   env:
+    #   - from: ServiceURL
+    #     to: SERVICE_URL_2
+    #   - from: ConsumerKey # Klyr1CQmMJfjshsMcjcmlGlAFqka
+    #     to: CLIENT_ID_2
+    #   - from: ConsumerSecret # fxNDdMVMf7ehFIubeMTtmFwaLEMa
+    #     to: CLIENT_SECRET_2
+    #   - from: TokenURL
+    #     to: TOKEN_URL_2
