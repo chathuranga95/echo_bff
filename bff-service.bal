@@ -11,20 +11,20 @@ final string tokenUrl2 = os:getEnv("TOKEN_URL_2");
 final string clientId2 = os:getEnv("CLIENT_ID_2");
 final string clientSecret2 = os:getEnv("CLIENT_SECRET_2");
 
-// http:Client helloClient = check new (serviceUrl,
-//     auth = {
-//         tokenUrl: tokenUrl == "" ? "https://sts.preview-dv.choreo.dev/oauth2/token" : tokenUrl,
-//         clientId: clientId == "" ? "Klyr1CQmMJfjshsMcjcmlGlAFqka" : clientId,
-//         clientSecret: clientSecret == "" ? "fxNDdMVMf7ehFIubeMTtmFwaLEMa" : clientSecret
-//     }
-// );
+http:Client helloClient = check new (serviceUrl,
+    auth = {
+        tokenUrl: tokenUrl == "" ? "https://sts.preview-dv.choreo.dev/oauth2/token" : tokenUrl,
+        clientId: clientId == "" ? "Klyr1CQmMJfjshsMcjcmlGlAFqka" : clientId,
+        clientSecret: clientSecret == "" ? "fxNDdMVMf7ehFIubeMTtmFwaLEMa" : clientSecret
+    }
+);
 
 service / on new http:Listener(9090) {
-    // resource function get greeting(string subpath = "") returns json|error? {
-    //     json resp = check helloClient->get("/" + subpath);
-    //     log:printInfo("Response: " + resp.toJsonString());
-    //     return resp;
-    // }
+    resource function get greeting(string subpath = "") returns json|error? {
+        json resp = check helloClient->get("/" + subpath);
+        log:printInfo("Response: " + resp.toJsonString());
+        return resp;
+    }
 
     resource function get diagnostic() returns json {
         json diagnostic = {
