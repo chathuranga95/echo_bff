@@ -1,0 +1,17 @@
+schemaVersion: 1.1
+endpoints:
+  - name: echo_bff
+    displayName: Echo BFF
+    service:
+      basePath: /
+      port: 9090
+    type: REST
+    networkVisibilities: 
+      - Public
+    schemaFilePath: bff_service_openapi.yaml
+dependencies:
+  connectionReferences:
+  - name: dummy-conn-1
+    resourceRef: service:/aget/bff-service/v1/803f0/PUBLIC
+  - name: hello-conn
+    resourceRef: service:/connkeysrotation/hello-svc-4-12-2024/v1/803f0/PUBLIC

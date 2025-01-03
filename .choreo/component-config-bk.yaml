@@ -17,27 +17,9 @@ spec:
       # This is mandatory if the endpoint type is set to REST or GraphQL.
       context: /
       schemaFilePath: bff_service_openapi.yaml
-  outbound:
-    serviceReferences:
-    - name: choreo:///chathurangasiriwardhana/connkeysrotation/hello-svc-4-12-2024/803f0/v1/PUBLIC
-      connectionConfig: 01efb200-f3b1-1458-b4cd-2517b71e5660
-      env:
-      - from: ServiceURL
-        to: SERVICE_URL
-      - from: ConsumerKey # Klyr1CQmMJfjshsMcjcmlGlAFqka
-        to: CLIENT_ID
-      - from: ConsumerSecret # fxNDdMVMf7ehFIubeMTtmFwaLEMa
-        to: CLIENT_SECRET
-      - from: TokenURL
-        to: TOKEN_URL
-    - name: choreo:///chathurangasiriwardhana/aget/bff-service/803f0/v1/PUBLIC
-      connectionConfig: 01efb219-f5d3-1ce0-af78-42cd77bd23f6
-      env:
-      - from: ServiceURL
-        to: SERVICE_URL_2
-      - from: ConsumerKey # Klyr1CQmMJfjshsMcjcmlGlAFqka
-        to: CLIENT_ID_2
-      - from: ConsumerSecret # fxNDdMVMf7ehFIubeMTtmFwaLEMa
-        to: CLIENT_SECRET_2
-      - from: TokenURL
-        to: TOKEN_URL_2
+  dependencies:
+    connectionReferences:
+    - name: dummy-conn-1
+      resourceRef: service:/aget/bff-service/v1/803f0/PUBLIC
+    - name: hello-conn
+      resourceRef: service:/connkeysrotation/hello-svc-4-12-2024/v1/803f0/PUBLIC
