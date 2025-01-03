@@ -15,3 +15,30 @@ dependencies:
     resourceRef: service:/aget/bff-service/v1/803f0/PUBLIC
   - name: hello-conn
     resourceRef: service:/connkeysrotation/hello-svc-4-12-2024/v1/803f0/PUBLIC
+configuration:
+  env:
+    - name: MY_SVC_URL
+      valueFrom: 
+        connectionRef:
+          name: hello-conn
+          key: CHOREO_HELLO_CONN_SERVICEURL
+    - name: MY_API_KEY
+      valueFrom: 
+        connectionRef:
+          name: hello-conn
+          key: CHOREO_HELLO_CONN_CHOREOAPIKEY
+    - name: MY_CONSUMER_SECRET
+      valueFrom: 
+        connectionRef:
+          name: hello-conn
+          key: CHOREO_HELLO_CONN_CONSUMERSECRET
+    - name: MY_TOKEN_URL
+      valueFrom: 
+        connectionRef:
+          name: hello-conn
+          key: CHOREO_HELLO_CONN_TOKENURL
+    - name: MY_CONSUMER_SECRET
+      valueFrom: 
+        connectionRef:
+          name: hello-conn
+          key: CHOREO_HELLO_CONN_CONSUMERKEY
