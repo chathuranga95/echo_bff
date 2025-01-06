@@ -17,28 +17,28 @@ dependencies:
     resourceRef: service:/connkeysrotation/hello-svc-4-12-2024/v1/803f0/PUBLIC
 configuration:
   env:
-    - name: MY_SVC_URL_UPDATE_2
+    - name: MY_SVC_URL_UPDATE_3
       valueFrom: 
         connectionRef:
           name: hello-conn
-          key: CHOREO_HELLO_CONN_SERVICEURL
-    - name: MY_API_KEY_UPDATE_2
+          key: ServiceURL
+    - name: MY_API_KEY_UPDATE_3
       valueFrom: 
         connectionRef:
           name: hello-conn
-          key: CHOREO_HELLO_CONN_CHOREOAPIKEY
-    - name: MY_CONSUMER_SECRET
+          key: ChoreoAPIKey
+    - name: MY_CONSUMER_SECRET_UPDATE_3
       valueFrom: 
         connectionRef:
           name: hello-conn
-          key: CHOREO_HELLO_CONN_CONSUMERSECRET
-    - name: MY_TOKEN_URL
+          key: ConsumerSecret
+    - name: MY_TOKEN_URL_UPDATE_3
       valueFrom: 
         connectionRef:
           name: hello-conn
-          key: CHOREO_HELLO_CONN_TOKENURL
-    - name: MY_CONSUMER_SECRET
+          key: TokenURL
+    - name: MY_CONSUMER_KEY_UPDATE_3
       valueFrom: 
         connectionRef:
           name: hello-conn
-          key: CHOREO_HELLO_CONN_CONSUMERKEY
+          key: ConsumerKey
