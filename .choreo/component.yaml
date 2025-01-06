@@ -17,12 +17,12 @@ dependencies:
     resourceRef: service:/connkeysrotation/hello-svc-4-12-2024/v1/803f0/PUBLIC
 configuration:
   env:
-    - name: MY_SVC_URL
+    - name: MY_SVC_URL_UPDATE_2
       valueFrom: 
         connectionRef:
           name: hello-conn
           key: CHOREO_HELLO_CONN_SERVICEURL
-    - name: MY_API_KEY
+    - name: MY_API_KEY_UPDATE_2
       valueFrom: 
         connectionRef:
           name: hello-conn
