@@ -22,7 +22,7 @@ configuration:
         connectionRef:
           name: hello-conn
           key: ServiceURL
-    - name: MY_API_KEY_UPDATE_4
+    - name: MY_SVC_URL_UPDATE_4
       valueFrom: 
         connectionRef:
           name: hello-conn
@@ -30,11 +30,10 @@ configuration:
     - name: MY_CONSUMER_SECRET_UPDATE_4
       valueFrom: 
         connectionRef:
-          name: hello-conn
           key: ConsumerSecret
     - name: MY_TOKEN_URL_UPDATE_4
       valueFrom: 
-        connectionRef:
+        connectionRef1:
           name: hello-conn
           key: TokenURL
     - name: MY_CONSUMER_KEY_UPDATE_4
