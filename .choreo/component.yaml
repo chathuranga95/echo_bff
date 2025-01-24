@@ -9,36 +9,34 @@ endpoints:
     networkVisibilities: 
       - Public
     schemaFilePath: bff_service_openapi.yaml
-# dependencies:
-#   connectionReferences:
-#   - name: dummy-conn-1
-#     resourceRef: service:/aget/bff-service/v1/803f0/PUBLIC
-#   - name: hello-conn
-#     resourceRef: service:/connkeysrotation/hello-svc-4-12-2024/v1/803f0/PUBLIC
-# configuration:
-#   env:
-#     - name: MY_SVC_URL_UPDATE_4
-#       valueFrom: 
-#         connectionRef:
-#           name: hello-conn
-#           key: ServiceURL
-#     - name: MY_API_KEY_UPDATE_4
-#       valueFrom: 
-#         connectionRef:
-#           name: hello-conn
-#           key: ChoreoAPIKey
-#     - name: MY_CONSUMER_SECRET_UPDATE_4
-#       valueFrom: 
-#         connectionRef:
-#           name: hello-conn
-#           key: ConsumerSecret
-#     - name: MY_TOKEN_URL_UPDATE_4
-#       valueFrom: 
-#         connectionRef:
-#           name: hello-conn
-#           key: TokenURL
-#     - name: MY_CONSUMER_KEY_UPDATE_4
-#       valueFrom: 
-#         connectionRef:
-#           name: hello-conn
-#           key: ConsumerKey
+dependencies:
+    connectionReferences:
+    - name: proxy-be-conn
+      resourceRef: service:/sourceconfigvalchaths/test-backend/v1/proxy/PUBLIC
+configuration:
+  env:
+    - name: MOCK_PROXY_URL
+      valueFrom: 
+        connectionRef:
+          name: hello-conn
+          key: ServiceURL
+    - name: MOCK_PROXY_API_KEY
+      valueFrom: 
+        connectionRef:
+          name: hello-conn
+          key: ChoreoAPIKey
+    - name: MOCK_PROXY_CONSUMER_SECRET
+      valueFrom: 
+        connectionRef:
+          name: hello-conn
+          key: ConsumerSecret
+    - name: MOCK_PROXY_TOKEN_URL
+      valueFrom: 
+        connectionRef:
+          name: hello-conn
+          key: TokenURL
+    - name: MOCK_PROXY_CONSUMER_SECRET
+      valueFrom: 
+        connectionRef:
+          name: hello-conn
+          key: ConsumerKey
