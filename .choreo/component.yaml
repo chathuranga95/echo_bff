@@ -18,25 +18,25 @@ configuration:
     - name: MOCK_PROXY_URL
       valueFrom: 
         connectionRef:
-          name: hello-conn
+          name: proxy-be-conn
           key: ServiceURL
     - name: MOCK_PROXY_API_KEY
       valueFrom: 
         connectionRef:
-          name: hello-conn
+          name: proxy-be-conn
           key: ChoreoAPIKey
     - name: MOCK_PROXY_CONSUMER_SECRET
       valueFrom: 
         connectionRef:
-          name: hello-conn
+          name: proxy-be-conn
           key: ConsumerSecret
     - name: MOCK_PROXY_TOKEN_URL
       valueFrom: 
         connectionRef:
-          name: hello-conn
+          name: proxy-be-conn
           key: TokenURL
     - name: MOCK_PROXY_CONSUMER_KEY
       valueFrom: 
         connectionRef:
-          name: hello-conn
+          name: proxy-be-conn
           key: ConsumerKey
