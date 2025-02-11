@@ -1,8 +1,6 @@
 import ballerina/http;
 import ballerina/log;
 import ballerina/os;
-import ballerina/time;
-// import ballerina/random;
 
 // final string serviceUrl = os:getEnv("SERVICE_URL");
 // final string tokenUrl = os:getEnv("TOKEN_URL");
@@ -31,22 +29,6 @@ service / on new http:Listener(9090) {
     // }
 
     resource function get diagnostic() returns json {
-
-        // boolean debugEnabled = random:createIntInRange(1, 100) > 50;
-
-        time:Utc startTime;
-        if debugEnabled {
-            startTime = time:utcNow();
-            log:printInfo("Diagnostic endpoint is called");
-        }
-
-        if debugEnabled {
-            time:Utc endTime = time:utcNow();
-            log:printInfo("Time taken to execute the diagnostic endpoint: " + time:utcDiffSeconds(endTime, startTime).toString() + "s");
-        } else {
-            log:printInfo("Time taken to execute the diagnostic endpoint: " + time:utcDiffSeconds(time:utcNow(), startTime).toString() + "s");
-        }
-        
         json diagnostic = {
             "diagnosticVersion": "v1.0",
             "envList": os:listEnv()
