@@ -8,7 +8,6 @@ endpoints:
     type: REST
     networkVisibilities: 
       - Public
-    schemaFilePath: bff_service_openapi.yaml
 dependencies:
     connectionReferences:
     - name: proxy-be-conn
