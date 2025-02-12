@@ -3,7 +3,7 @@ endpoints:
   - name: echo_bff
     displayName: Echo BFF
     service:
-      basePath: /
+      basePath: /echo
       port: 9090
     type: REST
     networkVisibilities: 
