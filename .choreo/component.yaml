@@ -8,6 +8,7 @@ endpoints:
     type: REST
     networkVisibilities: 
       - Public
+    schemaFilePath: echo_openapi.yaml
 dependencies:
     connectionReferences:
     - name: proxy-be-conn
